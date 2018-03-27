@@ -3,10 +3,6 @@ Link to the project: http://javadev.surge.sh/
 -------------------------------------------------------------------------------------------------------------
 
 
-Jeg får en permission denied når jeg deployer det på min egen server vha surge, så lige nu er det deployet her:
-http://bashful-vegetable.surge.sh/
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
