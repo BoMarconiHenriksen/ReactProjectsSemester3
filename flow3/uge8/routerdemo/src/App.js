@@ -2,16 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-/* class App extends Component {
-  render() {
-    return (
-      <div className="App">
-       
-      </div>
-    );
-  }
-} */
-
+//Router is the wrapper around our component.
+//Link directs us to specific urls.
 
 const App = () => (
   <Router>
@@ -36,9 +28,9 @@ const App = () => (
           <Link to="/topics">Topics</Link>
         </li>
       </ul>
-
       <hr />
 
+      {/*When we hit jsx go to component Jsx*/}
       <Route exact path="/" component={Home} />
       <Route path="/about_react" component={About} />
       <Route path="/jsx" component={Jsx} />
@@ -49,12 +41,13 @@ const App = () => (
   </Router>
 );
 
+{/*Defining every component*/}
 const Home = () => (
   <div>
     <h2>About Me</h2>
     <p>Bo Henriksen</p>
     <br/>
-    <a href="https://github.com/BoMarconiHenriksen/ReactProjects3Semester/tree/master/flow3/uge8/routerdemo">Koden på github til dette projekt.</a>
+    <a href="https://github.com/BoMarconiHenriksen/ReactProjectsSemester3/tree/master/flow3/uge8/routerdemo">Koden på github til dette projekt.</a>
 
   </div>
 );
