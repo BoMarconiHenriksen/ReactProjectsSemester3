@@ -6,6 +6,6 @@ import App from './App';
 import JokesStore from "./JokeStore";
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App  />, document.getElementById('root'));
+ReactDOM.render(<App jokeStore={JokesStore}  />, document.getElementById('root'));
 //ReactDOM.render(<App2 todoStore={store} />, document.getElementById('root'));
 registerServiceWorker();

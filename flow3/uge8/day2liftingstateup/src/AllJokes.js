@@ -6,7 +6,7 @@ export default class AllJokes extends React.Component {
     }
 
     render() {
-        const list = this.props.jokes.map((j, i) => (<li key={i}>{j}</li>))
+        const list = this.props.jokes.map((joke, index) => (<li key={index}>{joke}</li>))
         return (
             <ul>
                 {list}
