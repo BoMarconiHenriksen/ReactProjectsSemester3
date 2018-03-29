@@ -1,62 +1,47 @@
 import React, { Component } from 'react';
 import './App.css';
-import PersonInput from './PersonInput';
-
+import AddPerson from './AddPerson';
+import AllPersons from './AllPersons';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-
-    this.state = { person: "", info: "" };
+    this.state = {
+      persons: props.personStore.persons
+    };
   }
 
-  handleFirstNameChange(person) {
-    this.setState({ info: "firstName", person });
+  deletePerson = (id) => {
+    this.props.personStore.deletePerson(id);
+    this.setState({ persons: this.props.personStore.persons });
   }
 
-  handleLastNameChange(person) {
-    this.setState({ info: "lastName", person });
+  savePerson = (person) => {
+    this.props.personStore.addPerson(person);
+    this.setState({ persons: this.props.personStore.persons });
   }
 
-  handleEmailChange(person) {
-    this.setState({ info: "email", person });
+  onEditSubmit(id) {
+    console.log(id);
   }
-
 
   render() {
-    const info = this.state.info;
-    const person = this.state.person;
     return (
       <div className="App">
-        <PersonInput
-          info="firstName"
-          
-          onNameChange={this.handleFirstNameChange} />
 
-        <showPersons />
-
+        <p>Add person</p>
+        <AddPerson savePerson={this.savePerson} />
+        <br />
+        
+        <AllPersons 
+          persons={this.state.persons} 
+          deletePerson={this.deletePerson}
+          onEditSubmit={this.onEditSubmit} 
+        />
       </div>
     );
   }
-}
-
-var personList = ["Bo", "Bent"];
-
-function addPerson(props) {
-  personList.push.props;
-}
 
 
-
-
-function showPersons(props) {
-  let result = personList.map(function (props) {
-    return "<li>" + props + "</li>";
-  }).join("\n");
-
-  return result;
 }
 
 export default App;
