@@ -16,7 +16,7 @@ export default class AllPersons extends React.Component {
 
     onDelete = (event) => {
         event.preventDefault();
-        const target = event.target;
+        const target = event.target;//.id??? og slet næste linje
         const id = target.id;
 
         this.props.deletePerson(id);
@@ -71,7 +71,7 @@ export default class AllPersons extends React.Component {
                                     <button>gem</button>
                                 </form>
 
-                                <table>
+                                <table className="table">
                                     <thead>
                                         <tr><th>Firstname</th><th>Lastname</th><th>email</th></tr>
                                     </thead>
@@ -84,7 +84,7 @@ export default class AllPersons extends React.Component {
                         : (
                             <div>
                                 <h1>All Persons</h1>
-                                <table>
+                                <table className="table">
                                     <thead>
                                         <tr><th>Firstname</th><th>Lastname</th><th>email</th></tr>
                                     </thead>

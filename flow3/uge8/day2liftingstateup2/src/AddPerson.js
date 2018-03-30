@@ -12,6 +12,7 @@ export default class AddPerson extends React.Component {
         }
     }
 
+    //If only one input field
     /* firstNameHandleChange = (evt) => {
         this.setState({ person: {firstName: evt.target.value} })
     }

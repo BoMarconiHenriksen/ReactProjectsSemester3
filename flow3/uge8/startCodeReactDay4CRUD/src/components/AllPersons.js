@@ -3,24 +3,38 @@ import React from "react"
 
 
 export default class AllPersons extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      person: {
+        id: "",
+        age: "",
+        name: "",
+        gender: "",
+        email: ""
+      }
+    }
+
   }
 
   onEdit = (event) => {
     event.preventDefault();
     const id = event.target.id;
-    console.log(id);
-    this.setState({
-      id : id
-    });
+
+    const { persons } = this.props;
+
+    var person = persons.filter(person => person.id === id);
+
+    //console.log(person);
+    this.props.getPerson(person);
   }
 
   onDelete = (event) => {
     event.preventDefault();
     const id = event.target.id;
-    console.log(id);
-
+    
+    this.props.deletePerson(id);
   }
 
   render() {

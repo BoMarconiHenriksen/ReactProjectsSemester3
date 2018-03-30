@@ -1,13 +1,6 @@
 {
   "api": [
     {
-      "id": "59dde0def94062f06bcc1211",
-      "age": 27,
-      "name": "Gale Sullivan",
-      "gender": "female",
-      "email": "galesullivan@zedalis.com"
-    },
-    {
       "id": "59dde0deb5516ea4f23590f9",
       "age": 31,
       "name": "Karyn Fulton",
@@ -90,6 +83,20 @@
       "name": "Autumn Foley",
       "gender": "female",
       "email": "autumnfoley@zedalis.com"
+    },
+    {
+      "id": "nfSb5Ek",
+      "name": "Bo Henriksen",
+      "age": "12",
+      "email": "bo@bo.dk",
+      "gender": "Male"
+    },
+    {
+      "id": "Fcxrl2I",
+      "name": "Bob",
+      "age": "23",
+      "email": "bob@bob.dk",
+      "gender": "Male"
     }
   ]
 }

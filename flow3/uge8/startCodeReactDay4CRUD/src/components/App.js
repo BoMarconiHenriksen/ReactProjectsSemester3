@@ -7,7 +7,50 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {persons: [], err:""} //state sat her
+    this.state = { persons: [], err: "" } //state sat her. persons er defineret som et tom array.
+  }
+
+ getPerson = (person) => {
+   console.log(person);
+
+   this.setState({
+    person
+  });
+  //Mangler at få person videre over i AddEditPerson
+  //function editPerson(person);
+
+ }
+
+  editPerson = async (person) => {
+    console.log(person);
+    return person;
+  }
+
+  addEditPerson = async (person) => {
+    //if id === null post else put
+   //console.log(person);
+    try {
+      await this.props.facade.addEditPerson(person);
+      //Updates the new list
+      let data = await this.props.facade.getPersonsAsync(); // Return promise
+      this.setState({
+        persons: data
+      });
+    } catch (err) {
+      
+    }
+  }
+
+  deletePerson = async (id) => {
+    try {
+      await this.props.facade.deletePerson(id);
+      let data = await this.props.facade.getPersonsAsync(); // Return promise
+      this.setState({
+        persons: data
+      });
+    } catch (err) {
+
+    }
   }
 
   //Kan laves async og laves som i async componentDidMount
@@ -17,8 +60,8 @@ class App extends Component {
     person = this.props.person;
     console.log('App: ' + person);
     this.props.facade.addPerson(person)
-    .then(data => this.setState({person: data, err: ""}))
-    .catch(err => this.setState({err: err.message}))
+      .then(data => this.setState({ person: data, err: "" }))
+      .catch(err => this.setState({ err: err.message }))
   }
 
   /* //Fetch sker her. Der skal være state inden med dummy data.
@@ -27,13 +70,15 @@ class App extends Component {
     .then(data => this.setState({persons: data, err:""})) //setState kalder render
     .catch(err => this.setState({err:err.message}))//Får fejl ind
   } */
-//Til async i datafacade. Køres i rækkefølgen det står i.
+  //Til async i datafacade. Køres i rækkefølgen det står i.
   async componentDidMount() {
     try {
-    var data = await this.props.facade.getPersonsAsync() //returner promise
-    //Kommer ikke her ned før data er hentet
-    this.setState({persons: data, err:""});
-    } catch(err) {
+      var data = await this.props.facade.getPersonsAsync() //returner promise
+      //Kommer ikke her ned før data er hentet
+      this.setState({
+        persons: data, err: "" //Her kommer der data i states tomme array.
+      });
+    } catch (err) {
 
     }
   }
@@ -45,14 +90,24 @@ class App extends Component {
         <div className="row">
           <div className="col-md-8">
             <h3>All Persons</h3>
-            <AllPersons persons={this.state.persons} />
+            <AllPersons
+              persons={this.state.persons}
+              deletePerson={this.deletePerson}
+              addEditPerson={this.addEditPerson}
+              getPerson={this.getPerson}
+            />
           </div>
+
           <div className="col-md-4" >
-            <h3 style={{textAlign:"center"}}>Add Persons</h3>
-            <AddEditPerson addPerson={this.addPerson} />
+            <h3 style={{ textAlign: "center" }}>Add Persons</h3>
+            <AddEditPerson
+              addEditPerson={this.addEditPerson}
+              editPerson={this.editPerson}
+              
+            />
           </div>
         </div>
-      <p style = {{color:"red"}}>{this.state.err}</p>
+        <p style={{ color: "red" }}>{this.state.err}</p>
       </div>
     );
   }

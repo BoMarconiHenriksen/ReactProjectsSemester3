@@ -23,6 +23,10 @@ function makeOptions(type, data) {
 
 class DataFacade {
 
+  async deletePerson(id) {
+    await fetch(URL + "/" + id, makeOptions("DELETE"));
+  }
+
   /*
   OBSERVE-1: This returns a promise, NOT the actual data, you must handle asynchronicity by the client
   OBSERVE-2: To "simplify" how to handle asynchronicity you can use async/await as sketche in the example below*/
@@ -36,9 +40,13 @@ class DataFacade {
     return result;
   }
 
-  addPerson(person) {
-    console.log('addPerson i dataFacade: ' + person);
-    return fetch(URL, makeOptions("POST", person)).then(handleHttpErrors);
+  async getPersonById(id) {
+    var result = await fetch(URL + "/" + id, makeOptions("GET"));
+    return result;
+  }
+
+  async addEditPerson(person) {
+    await fetch(URL, makeOptions("POST", person)).then(handleHttpErrors);
     
     
   }
