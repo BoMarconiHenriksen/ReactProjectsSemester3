@@ -6,17 +6,29 @@ class App extends Component {
   
   constructor(props){
     super(props);
-    this.state = {countries: [], err:""} //State sættes her
+    this.state = {
+      countries: [], 
+      err:"",
+      //labels: []
+    
+    } 
   }
 
   async componentDidMount() {
     try {
       var data = await this.props.factory.getCountries()
       this.setState({ countries: data, err: ""});
+
+      const labelData = this.labels;
+      console.log("labelData: " + labelData);
+      this.setState({labels: labelData})
+      /* var labelsData = await this.props.factory.get
+      this.setState({ labels: labelsData, err: ""}); */
     } catch (err) {
       
     }
   }
+
 
   render() {
     return (
@@ -27,7 +39,10 @@ class App extends Component {
         <div className="App-intro">
           <p>Your initial task is to fetch data from the server (see exercise for how to start it),
            and create a table below, with these data</p>          
-          <CountryTable countries={this.state.countries}/>
+          <CountryTable 
+          countries={this.state.countries}
+          labels={this.state.labels}
+          />
         </div>
       </div>
     );

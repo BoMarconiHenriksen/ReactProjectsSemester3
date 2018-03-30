@@ -47,8 +47,6 @@ class DataFacade {
 
   async addEditPerson(person) {
     await fetch(URL, makeOptions("POST", person)).then(handleHttpErrors);
-    
-    
   }
 
 }

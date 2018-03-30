@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import factory from "./countryFactory";
+import countryFactory from "./countryFactory";
 
  ReactDOM.render(
-    <App factory={factory} />,document.getElementById('root')
+    <App factory={countryFactory} />,document.getElementById('root')
   );
 
 
