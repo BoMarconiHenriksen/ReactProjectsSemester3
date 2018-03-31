@@ -16,15 +16,17 @@ class App extends Component {
    this.setState({
     person
   });
-  //Mangler at få person videre over i AddEditPerson
+
+  //this.props.editPerson(person);
+  //Mangler at få person videre over i AddEditPerson.js
   //function editPerson(person);
 
  }
 
-  editPerson = async (person) => {
+  /* editPerson = async (person) => {
     console.log(person);
     return person;
-  }
+  } */
 
   addEditPerson = async (person) => {
     //if id === null post else put

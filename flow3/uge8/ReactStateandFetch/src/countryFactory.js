@@ -3,7 +3,7 @@ const LABELSURL = "http://localhost:3333/labels";
 
 class CountryFactory {
   constructor() {
-
+    
     this.labels = [];
     this.countries = [];
   }

@@ -41,8 +41,8 @@ export default class AddEditPerson extends Component {
     });
   }
 
-  editPerson = (personToEdit) => {
-    const person = this.props;
+  editPerson = (person) => {
+    //const person = this.props;
     console.log('person i addEditPerson: ' + person);
   }
 

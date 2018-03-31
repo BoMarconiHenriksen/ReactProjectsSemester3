@@ -19,9 +19,9 @@ class App extends Component {
       var data = await this.props.factory.getCountries()
       this.setState({ countries: data, err: ""});
 
-      const labelData = this.labels;
-      console.log("labelData: " + labelData);
-      this.setState({labels: labelData})
+      //const labelData = this.labels;
+      //console.log("labelData: " + labelData);
+     //this.setState({labels: labelData})
       /* var labelsData = await this.props.factory.get
       this.setState({ labels: labelsData, err: ""}); */
     } catch (err) {

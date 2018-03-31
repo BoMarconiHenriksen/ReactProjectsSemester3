@@ -20,13 +20,15 @@ export default class AllPersons extends React.Component {
 
   onEdit = (event) => {
     event.preventDefault();
+    //Get the id based on user click
     const id = event.target.id;
 
+    //persons now holds all the persons objects
     const { persons } = this.props;
 
+    //Find person based on id in the list of persons
     var person = persons.filter(person => person.id === id);
 
-    //console.log(person);
     this.props.getPerson(person);
   }
 
