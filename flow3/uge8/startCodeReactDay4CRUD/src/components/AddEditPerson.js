@@ -4,13 +4,46 @@ export default class AddEditPerson extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      person: { 
+      person: {
         id: "",
-        name: "", 
-        age: "", 
-        email: "", 
-        gender: "" }
+        name: "",
+        age: "",
+        email: "",
+        gender: ""
+      }
     };
+  }
+
+  /* componentWillReceiveProps(props) {
+    console.log(JSON.stringify(props.person));
+      if (props.person) {
+        console.log(this.props.id);
+        this.setState({ 
+          person: {
+          id: props.person.id,
+          name: props.person.name,
+          age: props.person.age,
+          email: props.person.email,
+          gender: props.person.gender,
+        }})
+        console.log(this.state.person.id);
+      };
+      
+    } */
+
+  componentWillReceiveProps(props) {
+    //const { person } = props.person;
+    console.log(props.person);
+    console.log(props.person.id);
+    this.setState({
+      person: {
+        id: props.person.id,
+        name: props.person.name,
+        age: props.person.age,
+        email: props.person.email,
+        gender: props.person.gender,
+      }
+    });
   }
 
   handleInput = (event) => {
@@ -41,16 +74,21 @@ export default class AddEditPerson extends Component {
     });
   }
 
-  editPerson = (person) => {
+  /* editPerson = (person) => {
     //const person = this.props;
     console.log('person i addEditPerson: ' + person);
-  }
+  } */
 
   render() {
-    const personName = this.props.personName;
+    //const { person } = this.props;
+
+    //console.log(person);
+    // console.log(person.name);
+
+    // console.log(this.state.person.id);
     return (
       <div>
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+        <form className="form-horizontal" onChange={this.handleInput} onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label className="control-label col-sm-3">Id:</label>
             <div className="col-sm-9">
@@ -60,25 +98,25 @@ export default class AddEditPerson extends Component {
           <div className="form-group">
             <label className="control-label col-sm-3" htmlFor="name">Name:</label>
             <div className="col-sm-9">
-              <input className="form-control" id="name" name="name" value={this.state.person.name} placeholder="Enter Name" onChange={this.handleInput} />
+              <input className="form-control" id="name" name="name" value={this.state.person.name} placeholder="Enter Name" />
             </div>
           </div>
           <div className="form-group">
             <label className="control-label col-sm-3" htmlFor="age">Age:</label>
             <div className="col-sm-9">
-              <input type="number" className="form-control" id="age"  name="age" value={this.state.person.age} placeholder="Enter age" onChange={this.handleInput} />
+              <input type="number" className="form-control" id="age" name="age" value={this.state.person.age} placeholder="Enter age" />
             </div>
           </div>
           <div className="form-group">
             <label className="control-label col-sm-3" htmlFor="email">Email:</label>
             <div className="col-sm-9">
-              <input type="email" className="form-control" id="email" name="email" value={this.state.person.email} placeholder="Enter email" onChange={this.handleInput} />
+              <input type="email" className="form-control" id="email" name="email" value={this.state.person.email} placeholder="Enter email" />
             </div>
           </div>
           <div className="form-group">
             <label className="control-label col-sm-3" htmlFor="pwd">Gender:</label>
             <div className="col-sm-9">
-              <input className="form-control" id="gender" name="gender" value={this.state.person.gender} placeholder="Enter Gender" onChange={this.handleInput} />
+              <input className="form-control" id="gender" name="gender" value={this.state.person.gender} placeholder="Enter Gender" />
             </div>
           </div>
           <div className="form-group">

@@ -7,26 +7,25 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { persons: [], err: "" } //state sat her. persons er defineret som et tom array.
+    this.state = { 
+      persons: [], //state sat her. persons er defineret som et tom array.
+      err: "",
+      person: [] 
+      } 
   }
 
- getPerson = (person) => {
+ editPerson = (person) => {
    console.log(person);
 
    this.setState({
-    person
-  });
+     person: person
+   });
 
-  //this.props.editPerson(person);
+  
   //Mangler at få person videre over i AddEditPerson.js
   //function editPerson(person);
 
  }
-
-  /* editPerson = async (person) => {
-    console.log(person);
-    return person;
-  } */
 
   addEditPerson = async (person) => {
     //if id === null post else put
@@ -72,6 +71,7 @@ class App extends Component {
     .then(data => this.setState({persons: data, err:""})) //setState kalder render
     .catch(err => this.setState({err:err.message}))//Får fejl ind
   } */
+  
   //Til async i datafacade. Køres i rækkefølgen det står i.
   async componentDidMount() {
     try {
@@ -86,6 +86,8 @@ class App extends Component {
   }
 
   render() {
+
+    //denne linje får person med over i addEditPerson.js:  person={this.state.person}
     return (
       <div style={{ margin: 20, width: "70%" }}>
         <h3>CRUD Demo </h3>
@@ -96,7 +98,7 @@ class App extends Component {
               persons={this.state.persons}
               deletePerson={this.deletePerson}
               addEditPerson={this.addEditPerson}
-              getPerson={this.getPerson}
+              editPerson={this.editPerson}
             />
           </div>
 
@@ -104,7 +106,8 @@ class App extends Component {
             <h3 style={{ textAlign: "center" }}>Add Persons</h3>
             <AddEditPerson
               addEditPerson={this.addEditPerson}
-              editPerson={this.editPerson}
+              person={this.state.person}
+             
               
             />
           </div>

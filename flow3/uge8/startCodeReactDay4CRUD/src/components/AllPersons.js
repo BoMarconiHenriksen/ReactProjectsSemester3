@@ -29,7 +29,7 @@ export default class AllPersons extends React.Component {
     //Find person based on id in the list of persons
     var person = persons.filter(person => person.id === id);
 
-    this.props.getPerson(person);
+    this.props.editPerson(person);
   }
 
   onDelete = (event) => {
@@ -42,6 +42,7 @@ export default class AllPersons extends React.Component {
   render() {
 
     const { persons } = this.props;//indeholder props.person
+    console.log(persons);
     var rows = persons.map(person => {
       return (
         <tr key={person.id}><td>{person.age}</td><td>{person.name}</td>
