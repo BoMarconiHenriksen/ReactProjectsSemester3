@@ -1,30 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-class Movie extends Component {
-    // We are using static because they are not changing
-    // Object of the diffrent types of props that are going to make an appearence inside of the component.
-    // Advantage is that nothing unexpected is being used or coming into the component
-    static propTypes = {
-      // movie: PropTypes.object //If you pass something in thats not an object it will complain.
+const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 
-      /* If you want to validate whats inside the object use shape.
-       Allows us to pass in another object where we can define the props that actually is coming in.
-       Use .isRequired if you have something that always need to be there. */
-      movie: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
+const Movie = ({ movie }) => (
+  <div>
+    {/* Each link is linked to a diffrent unic id */}
+    <Link to={`/${movie.id}`} >
+      <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+    </Link>
+  </div>
+);
 
-    }
+export default Movie;
 
-    render() {
-      return (
-        <div>
+
+Movie.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+// Below is how it looked in the beginning.
+
+/* class Movie extends Component {
+  static propTypes = {
+    movie: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+    }),
+  }
+
+  render() {
+    return (
+      <div>
           <h3>{this.props.movie.title}</h3>
 
         </div>
       );
     }
-}
+  }
+export default Movie; */
 
-export default Movie;
