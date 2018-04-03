@@ -31,7 +31,7 @@ export default class AddEditPerson extends Component {
       
     } */
 
-  componentWillReceiveProps(props) {
+  /* componentWillReceiveProps(props) {
     //const { person } = props.person;
     console.log(props.person);
     console.log(props.person.id);
@@ -44,7 +44,7 @@ export default class AddEditPerson extends Component {
         gender: props.person.gender,
       }
     });
-  }
+  } */
 
   handleInput = (event) => {
     const target = event.target;
@@ -63,7 +63,7 @@ export default class AddEditPerson extends Component {
     this.props.addEditPerson(this.state.person);
 
     //Clear the input fields
-    this.setState({
+    /* this.setState({
       person: {
         id: "",
         name: "",
@@ -71,7 +71,7 @@ export default class AddEditPerson extends Component {
         gender: "",
         email: ""
       }
-    });
+    }); */
   }
 
   /* editPerson = (person) => {
@@ -80,10 +80,10 @@ export default class AddEditPerson extends Component {
   } */
 
   render() {
-    //const { person } = this.props;
+    const { person } = this.props;
 
-    //console.log(person);
-    // console.log(person.name);
+    console.log(person);
+    console.log(person.name);
 
     // console.log(this.state.person.id);
     return (
@@ -92,13 +92,13 @@ export default class AddEditPerson extends Component {
           <div className="form-group">
             <label className="control-label col-sm-3">Id:</label>
             <div className="col-sm-9">
-              <input className="form-control" readOnly id="id" name="id" value={this.state.person.id} />
+              <input className="form-control" readOnly id="id" name="id" value={person.id} />
             </div>
           </div>
           <div className="form-group">
             <label className="control-label col-sm-3" htmlFor="name">Name:</label>
             <div className="col-sm-9">
-              <input className="form-control" id="name" name="name" value={this.state.person.name} placeholder="Enter Name" />
+              <input className="form-control" id="name" name="name" value={person.name} placeholder="Enter Name" />
             </div>
           </div>
           <div className="form-group">

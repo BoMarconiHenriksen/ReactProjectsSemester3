@@ -20,12 +20,7 @@ class App extends Component {
    this.setState({
      person: person
    });
-
-  
-  //Mangler at få person videre over i AddEditPerson.js
-  //function editPerson(person);
-
- }
+}
 
   addEditPerson = async (person) => {
     //if id === null post else put
