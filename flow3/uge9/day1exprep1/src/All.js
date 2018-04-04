@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import Details from './Details';
+import data from "./data/data.json";
 
 const All = ({ match }) => {
-console.log(match);
-    const usersData = 
+//console.log(match);
+    /* const usersData = 
      
         [
           {
@@ -61,10 +62,11 @@ console.log(match);
               "thumbnail": "http://api.randomuser.me/portraits/thumb/men/90.jpg"
             }
           }
-        ];
+        ]; */
       
      
-        //var {usersData} = this.props;
+        var usersData = data.users;
+        console.log(usersData);
    var linkList = usersData.map( (user) => {
      return(
        <li key={user.email}>
@@ -94,7 +96,7 @@ console.log(match);
      <Route path={`${match.url}/:userEmail`} render={ (props) => <Details data= {usersData} {...props} />}/>
      <Route exact path={match.url} 
        render={() => (
-         <div style={{ textAlign:'center'}}>Please select a user.</div>
+         <div style={{ textAlign:'left'}}>Please select a user.</div>
      )}/>
  
      </div>
