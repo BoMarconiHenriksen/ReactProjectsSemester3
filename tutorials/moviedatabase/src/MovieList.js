@@ -25,7 +25,6 @@ class MovieList extends Component {
     }
   }
 
-
   render() {
     return (
       <div>

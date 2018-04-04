@@ -7,7 +7,9 @@ const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 const Movie = ({ movie }) => (
   <div>
     {/* Each link is linked to a diffrent unic id */}
+    {/* String turbulations - allow us to use variables in a string */}
     <Link to={`/${movie.id}`} >
+      {/* Makes a string */}
       <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
     </Link>
   </div>

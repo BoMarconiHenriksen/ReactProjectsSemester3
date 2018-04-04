@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Link, Switch } from "react-router-dom";
+import { HashRouter, Route, Link, Switch, NavLink } from "react-router-dom";
 import './App.css';
+import Header from './Header';
+import Product from './Product';
+import Company from './Company';
+import Home from './Home';
 
 class App extends Component {
   render() {
@@ -16,16 +20,16 @@ class App extends Component {
           </ul>
         </nav>
 
+
+
         <HashRouter >
-          <div>
+          <Switch>
             <Header />
-            <Switch>
-              <Route exact path="/" render={() => <Home />} />
-              <Route path="/products" render={() => <Product />} />
-              <Route path="/company" render={() => <Company />} />
-              <Route component={NoMatch} />
-            </Switch>
-          </div>
+            <Route exact path="/" render={() => <Home />} />
+            <Route path="/products" render={() => <Product />} />
+            <Route path="/company" render={() => <Company />} />
+            
+          </Switch>
         </HashRouter>
 
       </div>
