@@ -20,5 +20,6 @@ class BookStore {
     }
 }
 
-//let bookStore = new BookStore();
-export default new BookStore();
+let bookStore = new BookStore();
+//export default new BookStore();
+export default bookStore;

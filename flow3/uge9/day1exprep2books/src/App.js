@@ -5,24 +5,14 @@ import Header from './Header';
 import Product from './Product';
 import Company from './Company';
 import Home from './Home';
+import AddBook from './AddBook';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bookList: this.bookStore
-    }
 
-  }
-
-
-
-  render() {
+ render() {
 
     var allBooks = this.props.bookStore.books;
-    //console.log(allBooks);
-    //data={allBooks} {...props}
-
+    
     return (
 
       <HashRouter>
@@ -30,7 +20,9 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" render={() => <Home  />} />
-            <Route path="/products" render={(props) => <Product data={allBooks} {...props} />} />
+            {/* Evt. efter allBooks {...props} */}
+            <Route path="/products" render={(props) => <Product data={allBooks} />} />
+            <Route path="/add_book" render={() => <AddBook data={allBooks} />} />
             <Route path="/company" render={() => <Company />} />
             <Route component={NoMatch} />
           </Switch>

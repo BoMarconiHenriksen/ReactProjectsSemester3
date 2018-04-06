@@ -17,21 +17,20 @@ console.log(this.props.bookStore.books);
 
 
 const Product = ({ data }) => {
-    console.log(data);
+
     const allBooks = data;
+
     const unOrderedList = allBooks.map(book => {
         return (
             <ul key={book.id}> {book.title} </ul>
         )
-    }) 
-         
-    
-    
+    })
+
     return (
         <div>
-        <h1>Product</h1>
-        {unOrderedList}
-        
+            <h1>Product</h1>
+            {unOrderedList}
+
         </div>
     );
 }
