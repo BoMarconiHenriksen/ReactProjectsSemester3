@@ -18,7 +18,7 @@ const Details = ({ match, data }) => {
             </div>;
             
     else
-        userData = <h2> Sorry. user doesnt exist </h2>;
+        userData = <h2> Sorry. User doesnt exist </h2>;
 
     return (
         <div style={{ display: 'flex' }}>

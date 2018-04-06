@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Link, Switch, NavLink } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import './App.css';
 import Header from './Header';
 import Product from './Product';
@@ -7,34 +7,46 @@ import Company from './Company';
 import Home from './Home';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bookList: this.bookStore
+    }
+
+  }
+
+
+
   render() {
+
+    var allBooks = this.props.bookStore.books;
+    //console.log(allBooks);
+    //data={allBooks} {...props}
+
     return (
-      <div>
 
-        <nav className="navbar navbar-light">
-          <ul className="nav navbar-nav">
-            {/*Link components are used for linking to other views*/}
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/products">Product</Link></li>
-            <li><Link to="/category">Company</Link></li>
-          </ul>
-        </nav>
-
-
-
-        <HashRouter >
+      <HashRouter>
+        <div>
+          <Header />
           <Switch>
-            <Header />
-            <Route exact path="/" render={() => <Home />} />
-            <Route path="/products" render={() => <Product />} />
+            <Route exact path="/" render={() => <Home  />} />
+            <Route path="/products" render={(props) => <Product data={allBooks} {...props} />} />
             <Route path="/company" render={() => <Company />} />
-            
+            <Route component={NoMatch} />
           </Switch>
-        </HashRouter>
-
-      </div>
+        </div>
+      </HashRouter>
     );
   }
 }
 
 export default App;
+
+const NoMatch = () => (
+  <div>
+    <h1>404 Wrong url!</h1>
+  </div>
+);
+
+
+
