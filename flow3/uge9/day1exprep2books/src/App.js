@@ -20,8 +20,8 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" render={() => <Home  />} />
-            {/* Evt. efter allBooks {...props} */}
-            <Route path="/products" render={(props) => <Product data={allBooks} />} />
+            {/* Evt. efter allBooks {...props} Alle props med */}
+            <Route path="/products" render={(props) => <Product data={allBooks} {...props}  />} />
             <Route path="/add_book" render={() => <AddBook data={allBooks} />} />
             <Route path="/company" render={() => <Company />} />
             <Route component={NoMatch} />

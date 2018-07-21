@@ -20,16 +20,16 @@ const Product = ({ data }) => {
 
     const allBooks = data;
 
-    const unOrderedList = allBooks.map(book => {
+    const lis = allBooks.map(book => {
         return (
-            <ul key={book.id}> {book.title} </ul>
+            <li key={book.id}> {book.title} </li>
         )
     })
 
     return (
         <div>
             <h1>Product</h1>
-            {unOrderedList}
+           <ul>{lis}</ul> 
 
         </div>
     );
